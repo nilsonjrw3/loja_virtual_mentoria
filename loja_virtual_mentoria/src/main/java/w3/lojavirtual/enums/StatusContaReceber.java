@@ -11,7 +11,6 @@ public enum StatusContaReceber {
 
 	
 	
-	
 	private StatusContaReceber(String descricao) {
 		this.descricao = descricao;
 	}
