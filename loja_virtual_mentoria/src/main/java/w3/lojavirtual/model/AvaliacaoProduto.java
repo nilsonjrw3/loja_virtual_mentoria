@@ -25,6 +25,7 @@ public class AvaliacaoProduto  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_avaliacao_produto")
 	private Long id;
 	
+	private String descricao;
 	
 	private Integer nota;
 	
@@ -41,6 +42,14 @@ public class AvaliacaoProduto  implements Serializable{
 		return id;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+	
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
