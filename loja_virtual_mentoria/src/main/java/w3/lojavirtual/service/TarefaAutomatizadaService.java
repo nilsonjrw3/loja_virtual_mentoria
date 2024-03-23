@@ -30,8 +30,8 @@ public class TarefaAutomatizadaService {
 	@Scheduled(initialDelay = 2000, fixedDelay = 86400000) /*Roda a cada 24 horas*/
 	//@Scheduled(cron = "0 0 11 * * *", zone = "America/Sao_Paulo") /*Vai rodar todo dia as 11 horas da manhã horario de Sao paulo*/
 	public void notificarUserTrocaSenha() throws UnsupportedEncodingException, MessagingException, InterruptedException{
-	
-List<Usuario> usuarios = usuarioRepository.usuarioSenhaVencida();
+		/**
+		List<Usuario> usuarios = usuarioRepository.usuarioSenhaVencida();
 		
 		for (Usuario usuario : usuarios) {
 			
@@ -46,7 +46,7 @@ List<Usuario> usuarios = usuarioRepository.usuarioSenhaVencida();
 			Thread.sleep(3000);
 			
 		}
-		
+		**/
 		
 	}
 	
