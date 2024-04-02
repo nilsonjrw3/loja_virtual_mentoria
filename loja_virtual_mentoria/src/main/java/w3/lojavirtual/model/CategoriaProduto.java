@@ -9,11 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 
 
@@ -33,15 +33,16 @@ public class CategoriaProduto implements Serializable {
 
 	
 	@ManyToOne(targetEntity = Pessoa.class)
-	@JoinColumn(name = "empresa_id", nullable = true, 
+	@JoinColumn(name = "empresa_id", nullable = false, 
 	foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "empresa_id_fk"))
-	private Pessoa empresa;
+	private PessoaJuridica empresa = new PessoaJuridica();
 	
-	public Pessoa getEmpresa() {
+
+	public PessoaJuridica getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(Pessoa empresa) {
+	public void setEmpresa(PessoaJuridica empresa) {
 		this.empresa = empresa;
 	}
 
@@ -63,11 +64,12 @@ public class CategoriaProduto implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((Id == null) ? 0 : Id.hashCode());
+		return result;
 	}
 
-	
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -77,7 +79,12 @@ public class CategoriaProduto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		CategoriaProduto other = (CategoriaProduto) obj;
-		return Objects.equals(Id, other.Id);
+		if (Id == null) {
+			if (other.Id != null)
+				return false;
+		} else if (!Id.equals(other.Id))
+			return false;
+		return true;
 	}
 
 	
